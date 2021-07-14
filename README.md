@@ -80,15 +80,35 @@ hello world
 Connection to 127.0.0.1 closed.
 ```
 
-### Check build status in Travis
 
-### Import the repo in GitHub
+### Create a new repo in Github from existing project 
 
-![image](https://user-images.githubusercontent.com/85481359/125571521-6890e462-1258-4100-8f3a-5c6047815f50.png)
+instructions [here](https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line)
 
-### Check the build in travis-ci.com
+### Create a personal token on GitHub for travis-ci 
 
-![image](https://user-images.githubusercontent.com/85481359/125571873-a2885413-41ad-4e0a-957c-ed709e2d0f80.png)
+Settings > Developer settings > Personal Auth Token. It must have the public_repo or repo scope to upload assets.
+
+### Login to travis in CLI
+
+```
+travis login --pro --github-token <newly-generated-token>
+```
+
+### Encrypt the token
+
+```
+travis encrypt <newly-generated-token> --com
+```
+
+### Update .travis.yml file with encrypted token from cli or GitHub and commit the change
+
+```
+git checkout -b <newbranch>
+git add .travis.yml
+git commit -m <your commit message>
+git push origin <newbranch>
+```
 
 
 ### Create a TAG in GitHub
